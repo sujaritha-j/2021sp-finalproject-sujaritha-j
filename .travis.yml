@@ -10,7 +10,7 @@ before_install:
   - echo -e "region=us-east-2" >> ~/.aws/config
   - echo -e "[default]" > ~/.aws/credentials
   - echo -e "aws_access_key_d=$AWS_ACCESS_KEY_ID" >> ~/.aws/credentials
-  - echo -e "aws_secret_access_key=AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials`
+  - echo -e "aws_secret_access_key=AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
 
 install:
   - pipenv install --dev --ignore-pipfile --deploy
