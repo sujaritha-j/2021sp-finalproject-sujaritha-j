@@ -40,5 +40,5 @@ deploy:
   script: make && pipenv run python -m final_project_file_load &&
         cd final_project_search_lambda &&
         sam build --template-file template.yaml &&
-        sam package --template-file .aws-sam/build/template.yaml --s3-bucket lambdadeploybucket08may2021 --profile GetProductV7 &&
-        sam deploy --profile GetProductV7 --template-file .aws-sam/build/template.yaml --stack-name GetProductV7 --capabilities CAPABILITY_NAMED_IAM --s3-bucket lambdadeploybucket08may2021
+        sam package --template-file .aws-sam/build/template.yaml --s3-bucket lambdadeploybucket08may2021 &&
+        sam deploy --template-file .aws-sam/build/template.yaml --stack-name GetProductV7 --capabilities CAPABILITY_NAMED_IAM --s3-bucket lambdadeploybucket08may2021
