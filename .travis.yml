@@ -40,4 +40,4 @@ deploy:
   script: make && pipenv run python -m final_project_file_load &&
         sam build --template final_project_search_lambda/template.yaml --build-dir final_project_search_lambda/.aws-sam/build &&
         sam package --template-file final_project_search_lambda/.aws-sam/build/template.yaml --output-template-file final_project_search_lambda/.aws-sam/build/packaged-template.yaml --s3-bucket lambdadeploybucket08may2021 &&
-        sam deploy --template-file final_project_search_lambda/.aws-sam/build/packaged-template.yaml --stack-name GetProductV10 --s3-bucket lambdadeploybucket08may2021 --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM --no-execute-changeset
+        sam deploy --template-file final_project_search_lambda/.aws-sam/build/packaged-template.yaml --stack-name GetProductV11 --s3-bucket lambdadeploybucket08may2021 --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM
