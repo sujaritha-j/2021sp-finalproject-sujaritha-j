@@ -7,13 +7,14 @@ before_install:
   - mkdir ~/.aws
   - echo -e "machine github.com\n login $CI_USER_TOKEN" > ~/.netrc
   - echo -e "[default]" > ~/.aws/config
-  - echo -e "region=us-east-2" >> ~/.aws/config
+  - echo -e "region=us-east-1" >> ~/.aws/config
   - echo -e "[default]" > ~/.aws/credentials
   - echo -e "aws_access_key_d=$AWS_ACCESS_KEY_ID" >> ~/.aws/credentials
   - echo -e "aws_secret_access_key=AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
 
 install:
   - pipenv install --dev --ignore-pipfile --deploy
+  - pipenv install wheel
 before_script: # code coverage tool
    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
    - chmod +x ./cc-test-reporter
@@ -38,5 +39,6 @@ deploy:
   # DO NOT commit these variables to git.
   script: make && pipenv run python -m final_project_file_load &&
         cd final_project_search_lambda &&
-        sam package --template-file template.yaml --s3-bucket lambdadeploybucket02may2021 --output-template-file packaged.yaml &&
-        sam deploy --template-file packaged.yaml --stack-name GetProductV3
+        sam build --template-file template.yaml &&
+        sam package --template-file .aws-sam/build/template.yaml --s3-bucket lambdadeploybucket08may2021 --profile GetProductV7 &&
+        sam deploy --profile GetProductV7 --template-file .aws-sam/build/template.yaml --stack-name GetProductV7 --capabilities CAPABILITY_NAMED_IAM --s3-bucket lambdadeploybucket08may2021

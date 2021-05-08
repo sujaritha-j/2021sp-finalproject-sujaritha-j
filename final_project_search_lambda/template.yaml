@@ -17,6 +17,9 @@ Resources:
       CodeUri: get_products/
       Handler: app.lambda_handler
       Runtime: python3.8
+      Role: arn:aws:iam::682430374594:role/service-role/fnKafkaProducer-role-vcetp72o
+      MemorySize: 5120
+      Timeout: 300
       Events:
         GetProducts:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -29,11 +32,8 @@ Outputs:
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   GetProductsApi:
-    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Description: "API Gateway endpoint URL for Prod stage for Get Product Search function"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/getproducts/"
   GetProductsFunction:
-    Description: "Hello World Lambda Function ARN"
+    Description: "Get Product Search Lambda Function ARN"
     Value: !GetAtt GetProductsFunction.Arn
-  GetProductsFunctionIamRole:
-    Description: "Implicit IAM Role created for Hello World function"
-    Value: !GetAtt GetProductsFunctionRole.Arn
