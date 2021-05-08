@@ -26,6 +26,11 @@ after_script:
 
 deploy:
   skip_cleanup: true
+  on:
+    branch:
+      - main
+      - master
+      - dev
   provider: script
   # Before running, get the data from s3 using the secret
 
