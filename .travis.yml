@@ -21,7 +21,6 @@ before_script: # code coverage tool
 script:
   - make && pytest --cov-report xml --cov-report term
   - sam validate -t final_project_search_lambda/template.yaml
-  - sam package --template-file final_project_search_lambda/template.yaml --s3-bucket lambdadeploybucket02may2021 --output-template-file packaged.yaml
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
@@ -36,4 +35,6 @@ deploy:
   # DO NOT commit these variables to git.
   script:
     - make && pipenv run python -m final_project_file_load
+    - cd final_project_search_lambda
+    - sam package --template-file template.yaml --s3-bucket lambdadeploybucket02may2021 --output-template-file packaged.yaml
     - sam deploy --template-file packaged.yaml --stack-name GetProductV3
