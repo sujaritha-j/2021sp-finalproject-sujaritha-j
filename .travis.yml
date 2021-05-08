@@ -26,16 +26,18 @@ after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 deploy:
-  skip_cleanup: false
-  branches:
-    except:
-      - dev1
-      - dev2
-  # provider: script
-  # script: make && pipenv run python -m final_project_file_load
-  provider: lambda
-  function_name: "final_project_search_lambda/get_products/"
-  region: "us-east-1"
-  role: "arn:aws:iam::682430374594:role/service-role/fnKafkaProducer-role-vcetp72o"
-  runtime: "python3.8"
-  handler_name: "app.lambda_handler"
+  skip_cleanup: true
+  on:
+    branch:
+      - main
+      - master
+      - dev
+  provider: script
+  # Before running, get the data from s3 using the secret
+
+  # credentials entered at https://travis-ci.com/csci-e-29/YOUR_PSET_REPO_NAME/settings
+  # DO NOT commit these variables to git.
+  script: make && pipenv run python -m final_project_file_load &&
+        sam build --template final_project_search_lambda/template.yaml --build-dir final_project_search_lambda/.aws-sam/build &&
+        sam package --template-file final_project_search_lambda/.aws-sam/build/template.yaml --output-template-file final_project_search_lambda/.aws-sam/build/packaged-template.yaml --s3-bucket lambdadeploybucket08may2021 &&
+        sam deploy --template-file final_project_search_lambda/.aws-sam/build/packaged-template.yaml --stack-name GetProductV10 --s3-bucket lambdadeploybucket08may2021 --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM --no-execute-changeset
