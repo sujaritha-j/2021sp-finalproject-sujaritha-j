@@ -15,6 +15,9 @@ class MainTask(WrapperTask):
     s3_output_path = Parameter()
 
     def requires(self):
+        """
+        Checks to see if the data exist in S3 for download
+        """
         return{
             'data_download': DataDownloadTask(self.s3_data_path, self.s3_output_path)
         }
@@ -22,9 +25,11 @@ class MainTask(WrapperTask):
 
 def main():
     """
-    Read command line arguments --full -> to select entire dataset
+    Read command line arguments:
+
+    --full -> to select entire dataset
     --canvas_submit  -> to submit the assignment
-    :return: None
+
     """
     parser = ArgumentParser()
     parser.add_argument('--full', action='store_false')

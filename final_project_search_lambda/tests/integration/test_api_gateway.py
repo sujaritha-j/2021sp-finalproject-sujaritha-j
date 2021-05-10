@@ -8,12 +8,18 @@ import requests
 Make sure env variable AWS_SAM_STACK_NAME exists with the name of the stack we are going to test. 
 """
 
-
 class TestApiGateway(TestCase):
     api_endpoint: str
 
     @classmethod
     def get_stack_name(cls) -> str:
+        """
+        Get the AWS SAM Stack name from the environment variables.
+        Make sure env variable AWS_SAM_STACK_NAME exists with the name of the stack we are going to test.
+
+        :return: stack_name(str) : Returns the AWS SAM Stack name
+        """
+
         stack_name = os.environ.get("AWS_SAM_STACK_NAME")
         if not stack_name:
             raise Exception(
@@ -26,7 +32,7 @@ class TestApiGateway(TestCase):
     def setUp(self) -> None:
         """
         Based on the provided env variable AWS_SAM_STACK_NAME,
-        here we use cloudformation API to find out what the HelloWorldApi URL is
+        here we use cloudformation API to find out the HelloWorldApi URL
         """
         stack_name = TestApiGateway.get_stack_name()
 
@@ -50,6 +56,8 @@ class TestApiGateway(TestCase):
     def test_api_gateway(self):
         """
         Call the API Gateway endpoint and check the response
+
+        return: (boolean) :Returns True or False based on the response
         """
         response = requests.get(self.api_endpoint)
         self.assertDictEqual(response.json(), {"message": "hello world"})

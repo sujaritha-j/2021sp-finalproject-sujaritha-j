@@ -12,7 +12,7 @@ mock = "*"
 python_version = "3.8"
 
 [packages]
-csci-utils = {editable = true, extras = ["all"], git = "https://github.com/csci-e-29/2021sp-csci-utils-sujaritha-j.git"}
+#csci-utils = {editable = true, extras = ["all"], git = "https://github.com/csci-e-29/2021sp-csci-utils-sujaritha-j.git"}
 luigi = "*"
 dask = {extras = ["dataframe"], version = "*"}
 pyarrow = "*"
@@ -22,3 +22,5 @@ mock = "*"
 numpy = "*"
 awscli = "*"
 aws-sam-cli = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
