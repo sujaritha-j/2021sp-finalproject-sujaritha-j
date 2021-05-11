@@ -61,6 +61,6 @@ Contents
 AUTO-DOC - Indices and tables
 -----------------------------
 
-* :ref:`AutoDoc INDEX - start here <genindex>`
+* :ref:`genindex`
 
 
