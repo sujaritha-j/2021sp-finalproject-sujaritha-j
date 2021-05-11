@@ -2,6 +2,15 @@
 
 Add any badges to your ***published documentation*** up here!
 
+[![Documentation](https://readthedocs.org/projects/enhanced-product-search/badge/?version=latest' alt='Documentation Status')](https://enhanced-product-search.readthedocs.io/en/latest/?badge=latest)
+
+[![Build Status](https://travis-ci.com/sujaritha-j/2021sp-finalproject-sujaritha-j.svg?branch=dev)](https://travis-ci.com/sujaritha-j/2021sp-finalproject-sujaritha-j)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/009f7f5f6c7f005c3293/maintainability)](https://codeclimate.com/github/sujaritha-j/2021sp-finalproject-sujaritha-j/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/009f7f5f6c7f005c3293/test_coverage)](https://codeclimate.com/github/sujaritha-j/2021sp-finalproject-sujaritha-j/test_coverage)
+
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
