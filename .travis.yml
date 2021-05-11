@@ -38,6 +38,6 @@ deploy:
   # credentials entered at https://travis-ci.com/csci-e-29/YOUR_PSET_REPO_NAME/settings
   # DO NOT commit these variables to git.
   script: make && pipenv run python -m final_project_file_load &&
-        sam build --template final_project_search_lambda/template.yaml --build-dir final_project_search_lambda/.aws-sam/build &&
+        sam build --template final_project_search_lambda/template.yaml --build-dir final_project_search_lambda/.aws-sam/build --use-container --debug &&
         sam package --template-file final_project_search_lambda/.aws-sam/build/template.yaml --output-template-file final_project_search_lambda/.aws-sam/build/packaged-template.yaml --s3-bucket lambdadeploybucket08may2021 &&
         sam deploy --template-file final_project_search_lambda/.aws-sam/build/packaged-template.yaml --stack-name GetProduct$TRAVIS_JOB_ID --s3-bucket lambdadeploybucket08may2021 --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM

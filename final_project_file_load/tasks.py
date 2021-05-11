@@ -9,6 +9,10 @@ from word_embedding.embedding import WordEmbedding
 
 
 class DataDownloadTask(luigi.ExternalTask):
+    """
+    This class downloads the dataset(csv file) from S3, calculates the vector of product description and stores
+    the vector as a new column and write it to Target S3
+    """
     s3_data_path = Parameter()  # Filename of the image under the root s3 path
     s3_output_path = Parameter()
     columns = ['uniq_id', 'product_name', 'brand_name', 'p_asin', 'category', 'upc_ean_code', 'list_price',
@@ -24,6 +28,10 @@ class DataDownloadTask(luigi.ExternalTask):
         return S3Target(self.s3_output_path)
 
     def run(self):
+        """
+        Reads the csv file from Source S3, calculates the vector value for the product description and stores it in a new column
+        and saves the file to Target S3 location
+        """
         try:
             # Read from S3
             ddf = dd.read_csv(  # pragma: no_cover
