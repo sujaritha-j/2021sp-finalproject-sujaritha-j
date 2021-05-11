@@ -8,9 +8,9 @@ Add any badges to your ***published documentation*** up here!
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/009f7f5f6c7f005c3293/maintainability)](https://codeclimate.com/github/sujaritha-j/2021sp-finalproject-sujaritha-j/maintainability)
 
-**Public repo with code ** - https://github.com/sujaritha-j/2021sp-finalproject-sujaritha-j.git
+**Public repo with code** - https://github.com/sujaritha-j/2021sp-finalproject-sujaritha-j.git
 
-**Dcoumentaion ** - https://enhanced-product-search.readthedocs.io/en/latest/index.html
+**Dcoumentaion** - https://enhanced-product-search.readthedocs.io/en/latest/index.html
 
 **Project:"Enhanced Product Search"**
 
@@ -21,6 +21,8 @@ Demo link to try the **Enhanced Product Search**: https://finalproject-spring-20
 To propose and demonstrate an ‘Enhanced product search’, built on python, leveraging ‘Word Embedding’ and ‘word2vec’. By vectorizing the product description and the search text, we find the cosine similarity and the distance between them to return the top matching products. This would help in better understanding the consumer’s search intent and retrieve products close to consumer’s need.
 
 For more details about the project please check the documentation.
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
