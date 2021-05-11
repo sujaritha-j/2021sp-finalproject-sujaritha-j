@@ -55,9 +55,6 @@ Contents
    :ref:`Future Enhancements <enhancements>`
 
 
-.. toctree::
-   :maxdepth: 5
-
 AUTO-DOC - Indices and tables
 -----------------------------
 
