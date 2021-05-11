@@ -113,3 +113,5 @@ venv.bak/
 /packaged.yaml
 /final_project_search_lambda/packaged.yaml
 /final_project_search_lambda/.aws-sam/build.toml
+/docs/Makefile
+/docs/make.bat

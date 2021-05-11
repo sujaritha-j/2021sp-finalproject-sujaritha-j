@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Enhanced Product Search documentation!
-=================================================
+Welcome to "Enhanced Product Search" documentation! - by Sujaritha Jagadeesan
+=============================================================================
 
 Contents
 ---------
@@ -13,9 +13,22 @@ Contents
 
    page1
 
-   :ref:`Try Enhanced Product Search Demo link <demo>`
-   :ref:`Background and Motivation <background>`
+   :ref:`Project Introduction <intro>`
+   :ref:`Try Enhanced Product Search Demo - Click Here <demo>`
    :ref:`Project Goal <goal>`
+   :ref:`Project Video <video>`
+
+
+.. toctree::
+   :maxdepth: 5
+
+   page4
+
+   :ref:`Background and Motivation <background>`
+   :ref:`Drawbacks of keywords based search <drawbacks>`
+   :ref:`Alternate-Enhanced Product search <alternate>`
+   :ref:`Focus on workflow not on Datascience <enhancements>`
+
 
 
 .. toctree::
@@ -23,6 +36,7 @@ Contents
 
    page2
 
+   :ref:`Architecture and Pipeline <architecture>`
    :ref:`Pipeline Architecture <pipeline>`
    :ref:`Components and Technologies <overview>`
    * :ref:`Application Layer <applayer>`
@@ -36,13 +50,17 @@ Contents
 
    :ref:`Highlights <highlights>`
    :ref:`Advanced Python concepts Applied <concepts>`
-   :ref:`New things learned <new>`
+   :ref:`New learnings <new>`
+   :ref:`Code Snippets <code>`
    :ref:`Future Enhancements <enhancements>`
 
 
-Indices and tables
--------------------
+.. toctree::
+   :maxdepth: 5
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+AUTO-DOC - Indices and tables
+-----------------------------
+
+* :ref:`AutoDoc INDEX - start here <genindex>`
+
+

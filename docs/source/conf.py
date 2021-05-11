@@ -18,7 +18,7 @@ sys.path.insert(0, basedir)
 
 # -- Project information -----------------------------------------------------
 
-project = 'Final Project - Enhanced Search - 2021sp-final-project-sujaritha-j'
+project = 'Enhanced Product Search'
 copyright = '2021, Sujaritha Jagadeesan'
 author = 'Sujaritha Jagadeesan'
 
@@ -49,9 +49,6 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
-html_theme_options = {
-    'page_width': 'auto'
-}
 
 
 # Add any paths that contain custom static files (such as style sheets) here,

@@ -131,26 +131,26 @@ class WordEmbeddingTests(TestCase):
         assert vector_for_word is not None
 
 
-class DataDownloadTaskTests(TestCase):
-    """
-    Class that contains all the methods/test cases for DownloadTasks
-    """
-    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-    LOCAL_ROOT = 'pset_5/data'
-    S3_MOCKED_BUCKET = 'suji-cscie29-data'
-    s3_data_path = 's3://cscie29-data/14a291ef/pset_5/yelp_data/*.csv'
-    test_path = 'data/'
-    ext = 'csv'
+#class DataDownloadTaskTests(TestCase):
+#    """
+#    Class that contains all the methods/test cases for DownloadTasks
+#    """
+#    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+#    LOCAL_ROOT = 'pset_5/data'
+#    S3_MOCKED_BUCKET = 'suji-cscie29-data'
+#    s3_data_path = 's3://cscie29-data/14a291ef/pset_5/yelp_data/*.csv'
+#    test_path = 'data/'
+#    ext = 'csv'
 
-    @mock.patch('final_project_file_load.tasks.DataDownloadTask')
-    @mock.patch('csci_utils.luigi.dask_target.CSVTarget')
-    def test_data_download_success(self, csv_target, data_download_task):
-        """
-        Testing Stylize success
-
-        :return: boolean: Returns 'True' if the download is a success, 'False' otherwise
-        """
-        job = data_download_task(s3_data_path=self.s3_data_path)
-        job.run()
-        is_local_exists = csv_target(path=os.path.join(self.test_path, 'YelpReviews'), glob='part-*.' + self.ext)
-        self.assertIsNotNone(is_local_exists)
+    #@mock.patch('final_project_file_load.tasks.DataDownloadTask')
+    #@mock.patch('csci_utils.luigi.dask_target.CSVTarget')
+    #def test_data_download_success(self, csv_target, data_download_task):
+    #    """
+    #    Testing Stylize success
+    #
+    #    :return: boolean: Returns 'True' if the download is a success, 'False' otherwise
+    #    """
+    #    job = data_download_task(s3_data_path=self.s3_data_path)
+    #    job.run()
+    #    is_local_exists = csv_target(path=os.path.join(self.test_path, 'YelpReviews'), glob='part-*.' + self.ext)
+    #    self.assertIsNotNone(is_local_exists)
