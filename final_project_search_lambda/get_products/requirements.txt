@@ -1,6 +1,7 @@
-pytest
-pytest-cov
-pyarrow
-boto3
-numpy
-pandas
+# Requirements for AWS lambda
+# Python packages
+#
+#
+numpy==1.19.0
+pandas==1.2.4
+boto3==1.17.71
