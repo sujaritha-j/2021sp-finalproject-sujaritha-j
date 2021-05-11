@@ -1,5 +1,3 @@
-pytest
-pytest-cov
 pyarrow
 boto3
 numpy
