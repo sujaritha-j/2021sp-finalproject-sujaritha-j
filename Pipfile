@@ -9,7 +9,7 @@ pytest-cov = "*"
 mock = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.8.7"
 
 [packages]
 #csci-utils = {editable = true, extras = ["all"], git = "https://github.com/csci-e-29/2021sp-csci-utils-sujaritha-j.git"}
@@ -19,7 +19,7 @@ pyarrow = "*"
 s3fs = "<0.5.0"
 boto3 = "*"
 mock = "*"
-numpy = "*"
+numpy = "1.19.0"
 awscli = "*"
 aws-sam-cli = "*"
 sphinx = "*"
