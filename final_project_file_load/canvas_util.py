@@ -10,9 +10,11 @@ from git import Repo
 
 
 def get_canvas() -> object:
-    """Get the Canvas object.
-    Read the environmental variables for URL and Access token of canvas
-    :returns Canvas object"""
+    """
+    Get the Canvas object. Read the environmental variables for URL and Access token of canvas
+
+    :return: Returns Canvas object
+    """
     return Canvas(os.getenv("CANVAS_URL"), os.getenv("CANVAS_TOKEN"))
 
 
@@ -22,23 +24,30 @@ def get_active_course_by_name(
     """
     Gets the list of all courses, compares it with the course name passed as an argument
     and returns the matching course object.
-    :param course_name: course name as string to compare against courses
-    :returns course: object
+
+    :param:(course_name): Course name as string to compare against courses
+
+    :return: Returns the course object
     """
+
     courses = get_canvas().get_courses()
     for course in courses:
         if course_name == str(course.name):
             return course
 
 
-def get_assignment_by_name(course: object, assign_name: str = "CSCI Utils") -> object:
+def get_assignment_by_name(course: object, assign_name: str = "Final Project") -> object:
     """
-    Gets the list of all assignments for a course,
-    compares it with the assignment name passed as an argument
+
+    Gets the list of all assignments for a course, compares it with the assignment name passed as an argument
     and returns the course object for the assignment id.
-    :param course: course object
-    :param assign_name: assignment name as string to compare against all assignments
-    :returns assignment id: Assignment id of the course object
+
+    :param: (course): course object
+
+    :param: (assign_name): Assignment name as string to compare against all assignments
+
+    :return: (assignment_id): Returns the Assignment id for the course object
+
     """
     assignments = course.get_assignments()
     for assignment in assignments:
@@ -46,15 +55,19 @@ def get_assignment_by_name(course: object, assign_name: str = "CSCI Utils") -> o
             return course.get_assignment(assignment.id)
 
 
-def get_quiz_by_name(course: object, quiz_name: str = "CSCI Utils") -> object:
+def get_quiz_by_name(course: object, quiz_name: str = "Test Quiz") -> object:
     """
-    Gets the list of all quizzes for a course,
-    compares it with the quiz name passed as an argument
+
+    Gets the list of all quizzes for a course, compares it with the quiz name passed as an argument
     and returns the course object for the quiz id.
-    :param course: course object
-    :param quiz_name: assignment name as string to compare against all assignments
-    :returns quiz id: quiz id of the course object
+
+    :param:(course): course object
+
+    :param: (quiz_name): Quiz name as string to compare against all assignments
+
+    :return:(course obj): Quiz id of the course object
     """
+
     quizzes = course.get_quizzes()
     for quiz in quizzes:
         if quiz_name == str(quiz.title):
@@ -81,10 +94,15 @@ def get_submission_comments(repo: Repo, q_submission: QuizSubmission) -> Dict:
 
 @contextmanager
 def submit_assignment(quiz, assignment, repo_dir) -> ContextManager: #pragma: no_cover
-    """Submits the Assignment with URL to the csci-e-29 repository and commit id information
-    :param - quiz object
-    :param - assignment object
-    :returns - ContextManager object"""
+    """
+    Submits the Assignment with URL to the csci-e-29 repository and commit id information
+
+    :param: quiz object
+
+    :param: assignment object
+
+    :return: Returns ContextManager object"""
+
     masquerade = {}
     repo = Repo(repo_dir)
     # # Begin submissions

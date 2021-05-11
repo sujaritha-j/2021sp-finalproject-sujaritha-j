@@ -8,7 +8,6 @@ from typing import Dict, ContextManager
 from typing import List
 
 from canvasapi.quiz import QuizSubmissionQuestion, QuizSubmission
-from django.core.management import BaseCommand
 from dotenv import load_dotenv
 from git import Repo
 
@@ -16,12 +15,14 @@ from .canvas_util import get_active_course_by_name
 from .canvas_util import get_assignment_by_name
 from .canvas_util import get_quiz_by_name
 
-from ...models import DimDate, FactReview
-
 
 def print_question(self, questions):  # pragma: no cover - print test
-    """ Get some basic information about the questions and print it to help develop the code
-    :param : questions obj
+    """
+
+    Get some basic information about the questions and print it to help develop the code
+
+    :param : (json obj) : Gets all the questions as an object
+
     """
     for q in questions:
         print("{} - {}".format(q.question_name, q.question_text.split("\n", 1)[0]))
@@ -34,26 +35,14 @@ def print_question(self, questions):  # pragma: no cover - print test
         )
         print()
 
-def get_reviews_by_date(self, answers):
-    """ read the parquet file and match the answers
-    :param : dict question
-    :return: dict of answers
-    """
-    return_answer = dict()
-    for attribute, value in answers.items():
-        date = DimDate.objects\
-            .filter\
-            (id=FactReview.objects.values('date').order_by('-{}'.format(attribute)).first()['date'])\
-            .first()\
-            .date\
-            .strftime('%Y-%m-%d')
-        return_answer[attribute] = str(date)
-    return return_answer
 
 def get_answers_hours(self, question, i=0):  # pragma: no cover - not part of final package
-    """For multiple choice answer, returns answer_id
-    :param: question obj and integer
-    :return: str - answer_id
+    """
+    For multiple choice answer, returns answer_id
+
+    :param (str): questions as a dictionary
+
+    :return: (str): Returns the answer_id
     """
     answer_id = i
     for answers_options in question.answers:
@@ -62,10 +51,15 @@ def get_answers_hours(self, question, i=0):  # pragma: no cover - not part of fi
 
     return answer_id
 
+
 def get_true_false_answer(self, question, i=0):  # pragma: no cover - not part of final package
-    """For multiple choice answer, returns answer_id
-    :param: question obj and int
-    :return: str answer id
+    """
+
+    For multiple choice answer, returns the answer_id
+
+    :param:(dict): question as a dictionary
+
+    :return: (str): Returns the answer id
     """
     answer_id = i
     for answers_options in question.answers:
@@ -74,22 +68,30 @@ def get_true_false_answer(self, question, i=0):  # pragma: no cover - not part o
 
     return answer_id
 
+
 def get_git_commit_id(self):  # pragma: no cover - not part of final package
     """
     Gets the git commit id
-    :return: str
+
+    :return: (str) Returns the commit id as string
     """
     git_root_dir = Path(__file__).parents[3]
     repo = Repo(git_root_dir)
     commit_id = repo.head.object.hexsha
     return commit_id.strip()
 
+
 def get_answers(self, questions: List[QuizSubmissionQuestion], quiz) -> List[
     Dict
 ]:  # pragma: no cover - not part of final package and it is specific to the questions/answers for this quiz
-    """Creates answers for Canvas quiz questions
-    : param : questions list, quiz obj
-    : return : list
+    """
+    Creates answers for Canvas quiz questions
+
+    :param: (list): List of questions
+
+    :param: quiz object
+
+    :return: (list) : Returns the quiz answers as list
     """
     # Formulate your answers see docs for QuizSubmission.answer_submission_questions below
     # It should be a list of dicts, one per q, each with an 'id' and 'answer' field
@@ -108,11 +110,18 @@ def get_answers(self, questions: List[QuizSubmissionQuestion], quiz) -> List[
             answers_list.append({"id": q.id, "answer": self.get_reviews_by_date(q.answer)})
     return answers_list
 
+
 def get_submission_comments(self, repo: Repo, q_submission: QuizSubmission) -> Dict:
-    """Get the required meta data information about this submission
-    :param repo : Repo object
-    :param q_submission : QuizSubmission
-    :returns Dictionary with the required meta data"""
+    """
+    Get the required meta data information about this submission
+
+    :param: (repo) : Repo object
+
+    :param:  (q_submission) : QuizSubmission object
+
+    :return: (dict): Returns with the required meta data
+    """
+
     return dict(
         hexsha=repo.head.commit.hexsha[:8],
         submitted_from=repo.remotes.origin.url,
@@ -126,16 +135,23 @@ def get_submission_comments(self, repo: Repo, q_submission: QuizSubmission) -> D
         document_git_repo="https://github.com/sujaritha-j/2021sp-finalproject-sujaritha-j"  # please update doc
     )
 
+
 @contextmanager
 def submit_assignment(self, quiz, assignment, repo_dir) -> ContextManager:
-    """Submits the Assignment with URL to the csci-e-29 repository and commit id information
-    :param - quiz object
-    :param - assignment object
-    :returns - ContextManager object"""
+    """
+     Submits the Assignment with URL to the git repository with commit id information
+
+    :param: quiz object
+
+    :param: assignment object
+
+    :return: Returns the ContextManager object
+
+    """
     masquerade = {}
     repo = Repo(repo_dir)
     # # Begin submissions
-    url = "https://github.com/sujaritha-j/2021sp-finalproject-sujaritha-j/commit/{}".format(
+    url = "https://github.com/csci-e-29/{}/commit/{}".format(
         repo.head.commit.hexsha
     )
 
@@ -164,10 +180,15 @@ def submit_assignment(self, quiz, assignment, repo_dir) -> ContextManager:
                     **masquerade,
                 )
 
+
 def submit_the_assignment(self, quiz,
                           assignment) -> object:  # pragma: no cover - not part of final package and the results are being printed out for verification
-    """Submit the assignment and print the responses
-    :param : quiz, assignment objects
+    """
+    Submit the assignment and print the responses
+
+    :param: quiz object
+
+    :param: assignment object
     """
     masquerade = {}
     git_root_dir = Path(__file__).parents[3]
@@ -184,8 +205,11 @@ def submit_the_assignment(self, quiz,
         )
         print(responses)
 
+
 def start_submission_process(self):  # pragma: no cover - It uses the functions already tested
-    """Get the objects needed for the submission process"""
+    """
+    Get the objects needed for the Assignment submission process
+    """
     load_dotenv()
     # get course
     course = get_active_course_by_name(os.getenv("CANVAS_COURSE_NAME"))

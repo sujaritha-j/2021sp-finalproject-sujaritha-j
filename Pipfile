@@ -9,7 +9,7 @@ pytest-cov = "*"
 mock = "*"
 
 [requires]
-python_version = "3.8.7"
+python_version = "3.8"
 
 [packages]
 #csci-utils = {editable = true, extras = ["all"], git = "https://github.com/csci-e-29/2021sp-csci-utils-sujaritha-j.git"}
@@ -25,8 +25,4 @@ aws-sam-cli = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
 python-dotenv = "*"
-wheel = "*"
 canvasapi = "*"
-git = "*"
-Repo = "*"
-gitpython = "*"
