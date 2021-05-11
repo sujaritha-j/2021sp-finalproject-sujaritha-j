@@ -42,3 +42,5 @@ def main():
         MainTask(s3_data_path=s3_data_path, s3_output_path=s3_output_path)
     ], local_scheduler=True)
     print('-----File load complete------')
+    # Call canvas submit
+    # start_submission_process()
