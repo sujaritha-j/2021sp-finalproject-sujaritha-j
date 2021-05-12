@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from luigi import WrapperTask, Parameter
 from luigi import build
 
-from .canvas_submit import start_submission_process
+from .canvas_submit import CanvasUtil
 from .tasks import DataDownloadTask
 
 
@@ -44,4 +44,4 @@ def main():
     ], local_scheduler=True)
     print('-----File load complete------')
     # Call canvas submit
-    start_submission_process()
+    CanvasUtil().start_submission_process()

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "32598b1bf9d752d9f2a37a80a97fd628554cd42d1c6be195a52a0115e79c5592"
+            "sha256": "8ef5d37eced9810a02c68106b78bc937a47d4d08671585268f81a694beb97f54"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -533,6 +533,14 @@
             "index": "pypi",
             "version": "==0.17.1"
         },
+        "python-git": {
+            "hashes": [
+                "sha256:2da0a75b562bc966d8a3bc1d6a2f8fd9f0fb3a3d3f2eff2239213bcc400bde82",
+                "sha256:87ef4aef32a65f44e301cff42e5d5f660a2ba8d6b9d7c021faedbb9028a57ba9"
+            ],
+            "index": "pypi",
+            "version": "==2018.2.1"
+        },
         "python-slugify": {
             "hashes": [
                 "sha256:6d8c5df75cd4a7c3a2d21e257633de53f52ab0265cd2d1dc62a730e8194a7380",
@@ -660,6 +668,13 @@
                 "sha256:cb022f4b16551edebbb31a377d3f09600dbada7363d8c5db7976e7f47732e1b2"
             ],
             "version": "==0.4.2"
+        },
+        "send2trash": {
+            "hashes": [
+                "sha256:60001cc07d707fe247c94f74ca6ac0d3255aabcb930529690897ca2a39db28b2",
+                "sha256:f1691922577b6fa12821234aeb57599d887c4900b9ca537948d2dac34aea888b"
+            ],
+            "version": "==1.5.0"
         },
         "serverlessrepo": {
             "hashes": [
