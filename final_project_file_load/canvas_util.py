@@ -106,8 +106,8 @@ def submit_assignment(quiz, assignment, repo_dir) -> ContextManager: #pragma: no
     masquerade = {}
     repo = Repo(repo_dir)
     # # Begin submissions
-    url = "https://github.com/csci-e-29/{}/commit/{}".format(
-        os.path.basename(repo.working_dir), repo.head.commit.hexsha
+    url = "https://github.com/sujaritha-j/2021sp-finalproject-sujaritha-j/commit/{}".format(
+        repo.head.commit.hexsha
     )  # you MUST push to the classroom org, even if CI/CD runs elsewhere
     # # (you can push anytime before peer review begins)
 
